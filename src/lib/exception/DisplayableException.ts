@@ -33,7 +33,7 @@ export class DisplayableException extends Error {
 		this.status = false;
 		this.name = name;
 		this.display = true;
-		this.report = true;
+		this.report = false;
 		this.created_at = Date.now();
 		Object.setPrototypeOf(this, DisplayableException.prototype);
 	}

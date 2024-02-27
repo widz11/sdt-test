@@ -1,4 +1,5 @@
 import { Request, Response, Application, NextFunction } from "express";
+import v1 from "./v1";
 
 /**
  * Class Routes
@@ -21,24 +22,29 @@ export class Routes {
 		 * API Health Check
 		 * ===============================================================================================================
 		 */
-		app.route("/").get((req: Request, res: Response) => {
-			res.status(200).send("Express + TypeScript Server");
-		});
+		// app.route("/").get((req: Request, res: Response) => {
+		// 	res.status(200).send("Express + TypeScript Server");
+		// });
 
 		/**
 		 * 🔥 API Documentations
 		 * ===============================================================================================================
 		 */
-		// app.route("/api-docs").get((req: Request, res: Response) => {
-		// 	res.sendFile(__dirname + "/docs/index.html");
-		// });
+		app.route("/").get((req: Request, res: Response) => {
+			res.sendFile(__dirname + "/docs/index.html");
+		});
+		app.route("/sdt-api-doc.json").get(
+			(req: Request, res: Response) => {
+				res.sendFile(__dirname + "/docs/sdt-api-doc.json");
+			}
+		);
 
 		/**
 		 * 🔥 API Version
 		 * =============================================================================================================
 		 * for version change, please add it in another folder, for example V1
 		 */
-		// app.use("/v1", v1);
+		app.use("/v1", v1);
 
 		// Optional fallthrough error handler
 		app.use(function onError(

@@ -20,7 +20,7 @@ export const MainDataSource = new DataSource({
 			"..",
 			"..",
 			"..",
-			"**/**/entity/model/*.{ts,js}"
+			"**/**/model/*.{ts,js}"
 		),
 	],
 	migrations: [
