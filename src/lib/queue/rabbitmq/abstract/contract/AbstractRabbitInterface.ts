@@ -1,0 +1,1 @@
+export const RABBIT_SERVICE = 'rabbitmq.queue'
