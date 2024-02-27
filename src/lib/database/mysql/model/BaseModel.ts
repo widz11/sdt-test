@@ -23,8 +23,8 @@ export class BaseModel
 	/**
 	 * @returns
 	 */
-	getId(): number {
-		return this.id as number;
+	getID(): number {
+		return typeof this.id == "string" && this.id ? parseInt(this.id) : 0;
 	}
 
 	/**

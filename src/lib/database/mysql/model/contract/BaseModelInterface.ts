@@ -6,7 +6,7 @@ export interface BaseModelInterface {
 	/**
 	 * @returns
 	 */
-	getId(): number;
+	getID(): number;
 
 	/**
 	 *

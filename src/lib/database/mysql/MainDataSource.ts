@@ -20,11 +20,11 @@ export const MainDataSource = new DataSource({
 			"..",
 			"..",
 			"..",
-			"**/**/entity/model/mysql/main/*.{ts,js}"
+			"**/**/entity/model/*.{ts,js}"
 		),
 	],
 	migrations: [
-		join(__dirname, "..", "..", "..", "migrations/main/*.{js,ts}"),
+		join(__dirname, "..", "..", "..", "migration/*.{js,ts}"),
 	],
 	poolSize: process.env.DB_CONNECTION_LIMIT ? parseInt(process.env.DB_CONNECTION_LIMIT) : 5,
 	extra: {
