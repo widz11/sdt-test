@@ -1,12 +1,12 @@
 import { Entity, Index, PrimaryGeneratedColumn, Column } from "typeorm";
 import { BaseModel } from "../../../lib/database/mysql/model/BaseModel";
-import { MailTemplateInterface } from "./contract/MailTemplateModelInterface";
+import { MailTemplateModelInterface } from "./contract/MailTemplateModelInterface";
 
 @Entity("mail_template")
 @Index(["id"], { unique: true })
-export class MailTemplate
+export class MailTemplateModel
 	extends BaseModel
-	implements MailTemplateInterface
+	implements MailTemplateModelInterface
 {
 	@PrimaryGeneratedColumn({ type: "bigint" })
 	id: number | undefined;

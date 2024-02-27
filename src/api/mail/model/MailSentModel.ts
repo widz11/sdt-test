@@ -4,7 +4,7 @@ import { MailSentModelInterface } from "./contract/MailSentModelInterface";
 
 @Entity("mail_sent")
 @Index(["id"], { unique: true })
-export class MailSent
+export class MailSentModel
 	extends BaseModel
 	implements MailSentModelInterface
 {

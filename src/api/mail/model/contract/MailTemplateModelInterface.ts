@@ -1,9 +1,9 @@
 import { BaseModelInterface } from "../../../../lib/database/mysql/model/contract/BaseModelInterface";
 
 /**
- * Interface MailTemplateInterface
+ * Interface MailTemplateModelInterface
  */
-export interface MailTemplateInterface extends BaseModelInterface {
+export interface MailTemplateModelInterface extends BaseModelInterface {
 	/**
 	 * GETTER
 	 * =================================================================================================================
