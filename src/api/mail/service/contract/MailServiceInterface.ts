@@ -12,4 +12,12 @@ export interface MailServiceInterface {
         mailAction: string,
         date: string
     ): Promise<void>;
+
+    /**
+     * 
+     * @param data
+     */
+    mailWorker(
+        data: any
+    ): Promise<void>;
 }

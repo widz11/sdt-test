@@ -1,4 +1,8 @@
+import { MailService } from "../../../api/mail/service/MailService";
+import { LOGGER_LEVEL_ERROR, WinstonLogger } from "../../logger/winston/WinstonLogger";
 import { AbstractRabbit } from "./abstract/AbstractRabbit";
+
+export const QUEUE_MAIL = 'email';
 
 /**
  * Class RabbitWorker
@@ -15,6 +19,7 @@ export class RabbitWorker extends AbstractRabbit {
 			await this.ch.prefetch(10);
 
 			// Consumer
+			await this.consume(QUEUE_MAIL)
 		} catch (e) {
 			console.log(e);
 			const __self = this;
@@ -63,12 +68,15 @@ export class RabbitWorker extends AbstractRabbit {
 		const route = msg.fields.routingKey;
 		const data = msg ? JSON.parse(msg.content) : null;
 		try {
+			// CONSUMER QUEUE
 			switch (route) {
-				// CONSUMER QUEUE
+				case QUEUE_MAIL:
+					await (new MailService).mailWorker(data);
+					break;
 			}
 		} catch (e) {
 			// LOG
-			console.log("Consumer Error: ", e);
+			WinstonLogger.winstonLog(LOGGER_LEVEL_ERROR, e);
 		} finally {
 			cb(true);
 		}

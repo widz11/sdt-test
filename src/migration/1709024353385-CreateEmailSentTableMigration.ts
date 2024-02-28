@@ -10,7 +10,7 @@ export class CreateEmailSentTableMigration1709024353385 implements MigrationInte
             \`admin_id\` BIGINT(20) UNSIGNED NOT NULL DEFAULT '0',
             \`batch\` BIGINT(20) UNSIGNED DEFAULT 0,
             \`status\` ENUM("failed", "processing", "success") NOT NULL DEFAULT 'processing',
-            \`send_at\` INT UNSIGNED DEFAULT 0,
+            \`send_at\` BIGINT(20) UNSIGNED DEFAULT 0,
             \`created_at\` TIMESTAMP NULL DEFAULT NULL,
             \`updated_at\` TIMESTAMP NULL DEFAULT NULL,
             PRIMARY KEY (\`id\`),

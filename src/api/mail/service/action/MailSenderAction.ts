@@ -19,11 +19,9 @@ export class MailSenderAction
         users: UserModelInterface[]
     ): Promise<any> {
         const dateTime = moment(date);
-        console.log(users)
         for (const user of users) {
             const localHour = dateTime.tz(user.getTimezone()).hour();
-            console.log(localHour)
-            // if (localHour == MAIL_TIME) {
+            if (localHour == MAIL_TIME) {
                 const mailSent = await this.mailSentRepository
                     .findByUserIDAndBatch(
                         user.getID(),
@@ -45,8 +43,11 @@ export class MailSenderAction
                         // Sent to queue
                         await this.queue.handlePub("", MAIL_QUEUE, 
                             JSON.stringify({
+                                batch: this.batch,
+                                mail_sent_id: trx.data.id,
                                 user_id: user.getID(),
                                 mail_template_id: this.mailTemplate.getID(),
+                                email: user.getEmail(),
                                 first_name: user.getFirstName(),
                                 last_name: user.getLastName(),
                                 dob: user.getDateOfBirth(),
@@ -57,7 +58,7 @@ export class MailSenderAction
                         return trx.data;
                     }
                 );
-            // }
+            }
         }
     }
 }

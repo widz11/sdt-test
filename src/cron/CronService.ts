@@ -13,8 +13,7 @@ export class CronService {
      */
     static run(): void {
         // Cron send email
-        cron.schedule('5 * * * * *', async () => {
-        // cron.schedule('* 1 * * *', async () => { // Run every 1 hour
+        cron.schedule('* 1 * * *', async () => { // Run every 1 hour
             console.log("Run cron mail birthday ");
             await (new MailService).sendMail(MAIL_BIRTHDAY, Dateparser.formatDate(new Date(), 'Y-m-d H:i:s'));
         });
