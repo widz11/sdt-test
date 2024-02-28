@@ -52,6 +52,8 @@ export class MailSentRepository
     ): Promise<MailSentModelInterface[]> {
         return await this.repository
 			.createQueryBuilder('ms')
+            .innerJoinAndMapOne('ms.user', 'ms.user', 'u')
+            .innerJoinAndMapOne('ms.template', 'ms.template', 'mt')
             .where('batch = :batch', { batch})
             .andWhere('status = :status', { status })
 			.getMany();

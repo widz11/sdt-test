@@ -1,4 +1,4 @@
-import { RequestValidation } from "../../../../../lib/validation/request/RequestValidation";
+import { RequestValidation } from "../../../../lib/validation/request/RequestValidation";
 
 /**
  * Class UserUpdaterRequest

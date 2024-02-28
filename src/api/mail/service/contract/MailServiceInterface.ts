@@ -20,4 +20,11 @@ export interface MailServiceInterface {
     mailWorker(
         data: any
     ): Promise<void>;
+
+    /**
+     * 
+     * @param request
+     * @returns
+     */
+    reSendMail(request: any): Promise<any>;
 }

@@ -21,7 +21,7 @@ export class MailSenderAction
         const dateTime = moment(date);
         for (const user of users) {
             const localHour = dateTime.tz(user.getTimezone()).hour();
-            if (localHour == MAIL_TIME) {
+            // if (localHour == MAIL_TIME) {
                 const mailSent = await this.mailSentRepository
                     .findByUserIDAndBatch(
                         user.getID(),
@@ -43,6 +43,7 @@ export class MailSenderAction
                         // Sent to queue
                         await this.queue.handlePub("", MAIL_QUEUE, 
                             JSON.stringify({
+                                admin_id: 0,
                                 batch: this.batch,
                                 mail_sent_id: trx.data.id,
                                 user_id: user.getID(),
@@ -58,7 +59,7 @@ export class MailSenderAction
                         return trx.data;
                     }
                 );
-            }
+            // }
         }
     }
 }

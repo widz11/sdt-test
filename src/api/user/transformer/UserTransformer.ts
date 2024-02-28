@@ -1,4 +1,4 @@
-import { Transformer } from "../../../../lib/transformer/Transformer";
+import { Transformer } from "../../../lib/transformer/Transformer";
 
 /**
  * Class UserTransformer

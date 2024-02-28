@@ -1,6 +1,10 @@
-import { Entity, Index, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, Index, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
 import { BaseModel } from "../../../lib/database/mysql/model/BaseModel";
 import { MailSentModelInterface } from "./contract/MailSentModelInterface";
+import { UserModel } from "../../user/model/UserModel";
+import { MailTemplateModel } from "./MailTemplateModel";
+import { UserModelInterface } from "../../user/model/contract/UserModelInterface";
+import { MailTemplateModelInterface } from "./contract/MailTemplateModelInterface";
 
 @Entity("mail_sent")
 @Index(["id"], { unique: true })
@@ -64,6 +68,26 @@ export class MailSentModel
 		default: null,
 	})
 	updated_at!: string;
+
+	@OneToOne(() => UserModel)
+	@JoinColumn({ name: "user_id" })
+	user!: UserModel;
+
+	@OneToOne(() => MailTemplateModel)
+	@JoinColumn({ name: "user_id" })
+	template!: MailTemplateModel;
+
+	/**
+	 * RELATIONS
+	 * =================================================================================================================
+	 */
+	getUser(): UserModelInterface {
+		return this.user;
+	}
+
+	getTemplate(): MailTemplateModelInterface {
+		return this.template;
+	}
 
 	/**
 	 * GETTER

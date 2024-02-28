@@ -8,16 +8,17 @@ import { AbstractMailAction } from "./AbstractMailAction";
  * Interface MailPayload
  */
 export interface MailPayload {
-    batch: number,
+    batch: number;
     mail_sent_id: number;
     user_id: number;
-    mail_template_id: number,
+    mail_template_id: number;
+    admin_id: number;
     email: string;
     first_name: string;
     last_name: string;
     dob: string;
     template: string;
-    message: string;    
+    message: string;
 }
 
 /**

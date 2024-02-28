@@ -22,23 +22,15 @@ export class ClientHttpRequestService
         try {
             let { headers } = options ?? {};
             headers = headers ?? JSON.stringify({});
-            // return await axios({
-            //     headers: JSON.parse(headers) ?? {
-            //         'Content-Type': 'application/json',
-            //         'Accept': 'application/json'
-            //     },
-            //     method: method,
-            //     url: url,
-            //     data: JSON.stringify(payload)
-            // });
-            return {
-                status: true,
-                message: 'success',
-                data: {
-                    "status": "sent",
-                    "sentTime": "2022-07-01T14:48:00.000Z"
-                }   
-            }
+            return await axios({
+                headers: JSON.parse(headers) ?? {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                method: method,
+                url: url,
+                data: JSON.stringify(payload)
+            });
         } catch (e: any) {
             // Handle decline
             if (e.response) {

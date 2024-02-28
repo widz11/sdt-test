@@ -1,9 +1,9 @@
 import { UserService } from "../service/UserService";
 import { UserServiceInterface } from "../service/contract/UserServiceInterface";
-import { UserCreatorRequest } from "../service/middleware/request/UserCreatorRequest";
-import { UserDeleteRequest } from "../service/middleware/request/UserDeleteRequest";
-import { UserFetcherRequest } from "../service/middleware/request/UserFetcherRequest";
-import { UserTransformer } from "../service/transformer/UserTransformer";
+import { UserCreatorRequest } from "../middleware/request/UserCreatorRequest";
+import { UserDeleteRequest } from "../middleware/request/UserDeleteRequest";
+import { UserFetcherRequest } from "../middleware/request/UserFetcherRequest";
+import { UserTransformer } from "../transformer/UserTransformer";
 
 export class UserController {
     protected service: UserServiceInterface;
