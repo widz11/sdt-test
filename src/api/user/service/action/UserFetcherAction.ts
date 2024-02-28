@@ -15,6 +15,6 @@ export class UserFetcherAction
      * @returns
      */
     async process(request: any): Promise<UserModelInterface[]> {
-        return await this.repository.getUsers();
+        return await this.repository.getUsers(request);
     }
 }

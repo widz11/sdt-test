@@ -23,7 +23,8 @@ export interface UserRepositoryInterface
 
 	/**
 	 *
+	 * @params input
 	 * @returns
 	 */
-	getUsers(): Promise<UserModelInterface[]>;
+	getUsers(input: any): Promise<UserModelInterface[]>;
 }

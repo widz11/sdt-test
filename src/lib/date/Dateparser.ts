@@ -34,6 +34,28 @@ export class Dateparser {
 		return new Date(unix * 1000);
 	}
 
+    /**
+	 * @param date Date
+	 * @param hour integer
+     * @returns
+	 */
+	static addHours(date: Date, hour: number = 0): Date {
+		const dateCopy = new Date(date.getTime());
+		dateCopy.setHours(date.getHours() + hour);
+		return dateCopy;
+	}
+
+	/**
+	 *
+	 * @param date
+	 * @param hour
+	 */
+	static subHours(date: Date, hour = 1): Date {
+		const dateCopy = new Date(date.getTime());
+		dateCopy.setHours(date.getHours() - hour);
+		return dateCopy;
+	}
+
 	/**
      * 
      * @param date 

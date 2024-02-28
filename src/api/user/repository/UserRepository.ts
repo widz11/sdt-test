@@ -40,11 +40,22 @@ export class UserRepository
 
     /**
      * 
+	 * @params input
      * @returns
      */
-    async getUsers(): Promise<UserModelInterface[]> {
-        return await this.repository
-			.createQueryBuilder('u')
-			.getMany();
+    async getUsers(input: any): Promise<UserModelInterface[]> {
+		// Init
+		const { start_date, end_date } = input ?? {};
+		// Query
+		let query = this.repository
+			.createQueryBuilder('u');
+		// Filter by date range
+		if (start_date && end_date) {
+			query = query.where('MONTH(u.dob) >= MONTH(:start_date)', { start_date })
+				.andWhere('MONTH(u.dob) <= MONTH(:end_date)', { end_date })
+				.andWhere('DAY(u.dob) >= DAY(:start_date)', { start_date })
+				.andWhere('DAY(u.dob) <= DAY(:end_date)', { end_date });
+		}
+        return await query.getMany();
     }
 }

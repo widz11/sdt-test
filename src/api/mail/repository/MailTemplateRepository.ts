@@ -34,7 +34,7 @@ export class MailTemplateRepository
     async findByName(name: string): Promise<MailTemplateModelInterface | null> {
         return await this.repository
 			.createQueryBuilder('mt')
-			.where("LOWER(u.name) = LOWER(:name)", { name })
+			.where("LOWER(mt.name) = LOWER(:name)", { name })
 			.getOne();
     }
 }
