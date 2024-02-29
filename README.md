@@ -38,3 +38,8 @@ Assessment Techincal Test for PT Surya Digital Teknologi
 ```bash
   npm run start
 ```
+
+7. Go to api docs
+```bash
+    http://localhost:3030
+```
