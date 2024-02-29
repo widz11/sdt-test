@@ -1,11 +1,8 @@
-import app from './app';
-import { CronService } from "./cron/CronService";
-import { RabbitWorker } from "./lib/queue/rabbitmq/RabbitWorker";
+import expressApp from './app';
 
 const port = process.env.PORT || 3000;
-CronService.run();
-(new RabbitWorker).handle()
-
+const app = expressApp.app;
+expressApp.run();
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });

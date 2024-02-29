@@ -24,7 +24,6 @@ Assessment Techincal Test for PT Surya Digital Teknologi
 4. Install dependencies
 ```bash
   npm install
-  # go version go1.20.4 darwin/amd64
 ```
 
 5. Run migration
@@ -41,5 +40,10 @@ Assessment Techincal Test for PT Surya Digital Teknologi
 
 7. Go to api docs
 ```bash
-    http://localhost:3030
+  http://localhost:3030
+```
+
+8. Run test
+```bash
+  npm run test
 ```

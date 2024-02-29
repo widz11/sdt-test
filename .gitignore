@@ -25,7 +25,6 @@ logs
 
 # Coveralls
 coverage
-jest-stare
 
 #IDE
 .idea

@@ -6,6 +6,8 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import bodyParser from "body-parser";
 import { Routes } from "./api/routes";
 import { Database } from "./lib/database/Database";
+import { RabbitWorker } from "./lib/queue/rabbitmq/RabbitWorker";
+import { CronService } from "./cron/CronService";
 config();
 
 /**
@@ -14,7 +16,6 @@ config();
 class App {
 	public app: Application;
 	public routePrv: Routes = new Routes();
-	private database: Promise<void>;
 
 	/**
 	 * Constructor App
@@ -23,7 +24,24 @@ class App {
 		this.app = express();
 		this.config();
 		this.routePrv.routes(this.app);
-		this.database = new Database().handle();
+	}
+
+	async run(): Promise<void> {
+		await this.database();
+		await this.queue();
+		await this.cron();
+	}
+
+	async database(): Promise<void> {
+		await (new Database).handle();
+	}
+
+	async queue(): Promise<void> {
+		await (new RabbitWorker).handle();
+	}
+
+	async cron(): Promise<void> {
+		CronService.run();
 	}
 
 	private config(): void {
@@ -38,4 +56,4 @@ class App {
 	}
 }
 
-export default new App().app;
+export default new App();
