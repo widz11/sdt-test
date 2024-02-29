@@ -12,16 +12,17 @@ Assessment Techincal Test for PT Surya Digital Teknologi
 2. Go to the project directory
 
 ```bash
-  cd esb-test
+  cd sdt-test
 ```
 
-3. Setup env
+3. Setup env database & queue "email"
 
 ```bash
   cp enc-example .env
 ```
 
 4. Install dependencies
+
 ```bash
   npm install
 ```
@@ -38,12 +39,14 @@ Assessment Techincal Test for PT Surya Digital Teknologi
   npm run start
 ```
 
-7. Go to api docs
+7. Go to service
+
 ```bash
   http://localhost:3030
 ```
 
 8. Run test
+
 ```bash
   npm run test
 ```
