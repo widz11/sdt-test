@@ -6,7 +6,7 @@ Assessment Techincal Test for PT Surya Digital Teknologi
 1. Clone the project
 
 ```bash
-  git clone https://github.com/widz11/esb-test.git
+  git clone https://github.com/widz11/sdt-test.git
 ```
 
 2. Go to the project directory
