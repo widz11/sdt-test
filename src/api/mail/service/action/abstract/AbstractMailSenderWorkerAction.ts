@@ -29,8 +29,9 @@ export abstract class AbstractMailSenderWorkerAction extends AbstractMailAction 
      * @protected
      */
     protected client: ClientService;
-    protected mailUrl: string = "https://email-service.digitalenvision.com.au/send-email";
+    protected mailUrl: string = "https://email-service.digitalenvision.com.au";
     protected mailUrlMethod: string = "POST";
+    protected mailPath: string = "send-email";
     protected mailSent!: MailSentModelInterface;
 
     /**
@@ -38,7 +39,7 @@ export abstract class AbstractMailSenderWorkerAction extends AbstractMailAction 
      */
     constructor() {
         super();
-        this.client = new ClientService();
+        this.client = new ClientService(this.mailUrl);
     }
 
     /**
@@ -112,7 +113,7 @@ export abstract class AbstractMailSenderWorkerAction extends AbstractMailAction 
         const response = await this.client.process({
             email: payload.email,
             message: payload.message
-        }, this.mailUrl, this.mailUrlMethod, {});
+        }, this.mailPath, this.mailUrlMethod, {});
         const clientResponse = new ClientResponse(response);
         return clientResponse;
     }

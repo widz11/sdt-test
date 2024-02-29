@@ -74,7 +74,7 @@ export class MailSentModel
 	user!: UserModel;
 
 	@OneToOne(() => MailTemplateModel)
-	@JoinColumn({ name: "user_id" })
+	@JoinColumn({ name: "mail_template_id" })
 	template!: MailTemplateModel;
 
 	/**

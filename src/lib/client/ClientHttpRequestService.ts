@@ -29,7 +29,7 @@ export class ClientHttpRequestService
                 },
                 method: method,
                 url: url,
-                data: JSON.stringify(payload)
+                data: payload
             });
         } catch (e: any) {
             // Handle decline
