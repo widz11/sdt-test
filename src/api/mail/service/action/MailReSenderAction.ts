@@ -41,7 +41,7 @@ export class MailReSenderAction
                             last_name: mailSent.getUser().getLastName(),
                             dob: mailSent.getUser().getDateOfBirth(),
                             template: mailSent.getTemplate().getName(),
-                            message: mailSent.getTemplate().getMessage(),
+                            message: mailSent.getTemplate().generateMessage(mailSent.getUser().fullName()),
                         })
                     );
                 }

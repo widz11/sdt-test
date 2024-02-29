@@ -12,4 +12,10 @@ export interface MailTemplateModelInterface extends BaseModelInterface {
     getName(): string;
 
 	getMessage(): string;
+
+	/**
+	 * MUTATOR
+	 * =================================================================================================================
+	 */
+	generateMessage(name: string): string;
 }

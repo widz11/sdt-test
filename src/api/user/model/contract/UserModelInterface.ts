@@ -18,4 +18,10 @@ export interface UserModelInterface extends BaseModelInterface {
     getDateOfBirth(): string;
 
     getTimezone(): string;
+
+	/**
+	 * MUTATOR
+	 * =================================================================================================================
+	 */
+	fullName(): string;
 }

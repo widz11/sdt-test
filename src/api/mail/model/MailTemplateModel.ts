@@ -49,4 +49,12 @@ export class MailTemplateModel
 	getMessage(): string {
 		return this.message ?? "";
 	}
+
+	/**
+	 * MUTATOR
+	 * =================================================================================================================
+	 */
+	generateMessage(name: string): string {
+		return `Hey, ${name} it's your birthday.`
+	}
 }

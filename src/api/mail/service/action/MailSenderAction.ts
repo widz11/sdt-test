@@ -53,7 +53,7 @@ export class MailSenderAction
                                 last_name: user.getLastName(),
                                 dob: user.getDateOfBirth(),
                                 template: this.mailTemplate.getName(),
-                                message: this.mailTemplate.getMessage(), 
+                                message: this.mailTemplate.generateMessage(user.fullName()), 
                             })
                         );
                         return trx.data;

@@ -80,4 +80,12 @@ export class UserModel
     getTimezone(): string {
         return this.timezone ?? "";
     }
+
+	/**
+	 * MUTATOR
+	 * =================================================================================================================
+	 */
+	fullName(): string {
+		return this.getFirstName() + ' ' + this.getLastName();
+	}
 }
