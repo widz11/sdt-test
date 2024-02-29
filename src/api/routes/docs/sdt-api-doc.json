@@ -1,542 +1,598 @@
 {
-    "openapi": "3.0.1",
-    "info": {
-      "title": "My Project",
-      "description": "",
-      "version": "1.0.0"
-    },
-    "tags": [
-      {
-        "name": "sdt-test"
-      }
-    ],
-    "paths": {
-      "/v1/user": {
-        "get": {
-          "summary": "User list",
-          "x-apidog-folder": "sdt-test",
-          "x-apidog-status": "developing",
-          "deprecated": false,
-          "description": "",
-          "tags": [
-            "sdt-test"
-          ],
-          "parameters": [],
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "status": {
-                        "type": "boolean"
-                      },
-                      "service": {
-                        "type": "string"
-                      },
-                      "message": {
-                        "type": "string"
-                      },
-                      "data": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "string"
-                            },
-                            "email": {
-                              "type": "string"
-                            },
-                            "first_name": {
-                              "type": "string"
-                            },
-                            "last_name": {
-                              "type": "string"
-                            },
-                            "dob": {
-                              "type": "string"
-                            },
-                            "timezone": {
-                              "type": "string"
-                            },
-                            "created_at": {
-                              "type": "string"
-                            },
-                            "updated_at": {
-                              "type": "string"
-                            }
+  "openapi": "3.0.1",
+  "info": {
+    "title": "My Project",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "Sdt-test"
+    }
+  ],
+  "paths": {
+    "/v1/user": {
+      "get": {
+        "summary": "User list",
+        "x-apidog-folder": "Sdt-test",
+        "x-apidog-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Sdt-test"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "service": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
                           },
-                          "x-apidog-ignore-properties": [],
-                          "x-apidog-orders": [
-                            "id",
-                            "email",
-                            "first_name",
-                            "last_name",
-                            "dob",
-                            "timezone",
-                            "created_at",
-                            "updated_at"
-                          ]
+                          "email": {
+                            "type": "string"
+                          },
+                          "first_name": {
+                            "type": "string"
+                          },
+                          "last_name": {
+                            "type": "string"
+                          },
+                          "dob": {
+                            "type": "string"
+                          },
+                          "timezone": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          }
+                        },
+                        "x-apidog-ignore-properties": [],
+                        "x-apidog-orders": [
+                          "id",
+                          "email",
+                          "first_name",
+                          "last_name",
+                          "dob",
+                          "timezone",
+                          "created_at",
+                          "updated_at"
+                        ]
+                      }
+                    },
+                    "created_at": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "service",
+                    "message",
+                    "data",
+                    "created_at"
+                  ],
+                  "x-apidog-ignore-properties": [],
+                  "x-apidog-orders": [
+                    "status",
+                    "service",
+                    "message",
+                    "data",
+                    "created_at"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apidog": "https://apidog.com/web/project/422667/apis/api-5777508-run"
+      },
+      "post": {
+        "summary": "Create user",
+        "x-apidog-folder": "Sdt-test",
+        "x-apidog-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Sdt-test"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "first_name": {
+                    "type": "string"
+                  },
+                  "last_name": {
+                    "type": "string"
+                  },
+                  "dob": {
+                    "type": "string"
+                  },
+                  "timezone": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "email",
+                  "first_name",
+                  "last_name",
+                  "dob",
+                  "timezone"
+                ],
+                "x-apidog-ignore-properties": [],
+                "x-apidog-orders": [
+                  "email",
+                  "first_name",
+                  "last_name",
+                  "dob",
+                  "timezone"
+                ]
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "service": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string"
+                        },
+                        "first_name": {
+                          "type": "string"
+                        },
+                        "last_name": {
+                          "type": "string"
+                        },
+                        "dob": {
+                          "type": "string"
+                        },
+                        "timezone": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
                         }
                       },
-                      "created_at": {
-                        "type": "integer"
-                      }
+                      "required": [
+                        "email",
+                        "first_name",
+                        "last_name",
+                        "dob",
+                        "timezone",
+                        "created_at",
+                        "updated_at",
+                        "id"
+                      ],
+                      "x-apidog-ignore-properties": [],
+                      "x-apidog-orders": [
+                        "email",
+                        "first_name",
+                        "last_name",
+                        "dob",
+                        "timezone",
+                        "created_at",
+                        "updated_at",
+                        "id"
+                      ]
                     },
-                    "required": [
-                      "status",
-                      "service",
-                      "message",
-                      "data",
-                      "created_at"
-                    ],
-                    "x-apidog-ignore-properties": [],
-                    "x-apidog-orders": [
-                      "status",
-                      "service",
-                      "message",
-                      "data",
-                      "created_at"
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "x-run-in-apidog": "https://apidog.com/web/project/422667/apis/api-5777508-run"
-        },
-        "post": {
-          "summary": "Create user",
-          "x-apidog-folder": "sdt-test",
-          "x-apidog-status": "developing",
-          "deprecated": false,
-          "description": "",
-          "tags": [
-            "sdt-test"
-          ],
-          "parameters": [],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "email": {
-                      "type": "string"
-                    },
-                    "first_name": {
-                      "type": "string"
-                    },
-                    "last_name": {
-                      "type": "string"
-                    },
-                    "dob": {
-                      "type": "string"
-                    },
-                    "timezone": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "email",
-                    "first_name",
-                    "last_name",
-                    "dob",
-                    "timezone"
-                  ],
-                  "x-apidog-ignore-properties": [],
-                  "x-apidog-orders": [
-                    "email",
-                    "first_name",
-                    "last_name",
-                    "dob",
-                    "timezone"
-                  ]
-                },
-                "example": ""
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "status": {
-                        "type": "boolean"
-                      },
-                      "service": {
-                        "type": "string"
-                      },
-                      "message": {
-                        "type": "string"
-                      },
-                      "data": {
-                        "type": "object",
-                        "properties": {
-                          "email": {
-                            "type": "string"
-                          },
-                          "first_name": {
-                            "type": "string"
-                          },
-                          "last_name": {
-                            "type": "string"
-                          },
-                          "dob": {
-                            "type": "string"
-                          },
-                          "timezone": {
-                            "type": "string"
-                          },
-                          "created_at": {
-                            "type": "string"
-                          },
-                          "updated_at": {
-                            "type": "string"
-                          },
-                          "id": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "email",
-                          "first_name",
-                          "last_name",
-                          "dob",
-                          "timezone",
-                          "created_at",
-                          "updated_at",
-                          "id"
-                        ],
-                        "x-apidog-ignore-properties": [],
-                        "x-apidog-orders": [
-                          "email",
-                          "first_name",
-                          "last_name",
-                          "dob",
-                          "timezone",
-                          "created_at",
-                          "updated_at",
-                          "id"
-                        ]
-                      },
-                      "created_at": {
-                        "type": "integer"
-                      }
-                    },
-                    "required": [
-                      "status",
-                      "service",
-                      "message",
-                      "data",
-                      "created_at"
-                    ],
-                    "x-apidog-ignore-properties": [],
-                    "x-apidog-orders": [
-                      "status",
-                      "service",
-                      "message",
-                      "data",
-                      "created_at"
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "x-run-in-apidog": "https://apidog.com/web/project/422667/apis/api-5777555-run"
-        },
-        "put": {
-          "summary": "Update user",
-          "x-apidog-folder": "sdt-test",
-          "x-apidog-status": "developing",
-          "deprecated": false,
-          "description": "",
-          "tags": [
-            "sdt-test"
-          ],
-          "parameters": [],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "integer"
-                    },
-                    "email": {
-                      "type": "string"
-                    },
-                    "first_name": {
-                      "type": "string"
-                    },
-                    "last_name": {
-                      "type": "string"
-                    },
-                    "dob": {
-                      "type": "string"
-                    },
-                    "timezone": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "id",
-                    "email",
-                    "first_name",
-                    "last_name",
-                    "dob",
-                    "timezone"
-                  ],
-                  "x-apidog-ignore-properties": [],
-                  "x-apidog-orders": [
-                    "id",
-                    "email",
-                    "first_name",
-                    "last_name",
-                    "dob",
-                    "timezone"
-                  ]
-                },
-                "example": ""
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "status": {
-                        "type": "boolean"
-                      },
-                      "service": {
-                        "type": "string"
-                      },
-                      "message": {
-                        "type": "string"
-                      },
-                      "data": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "email": {
-                            "type": "string"
-                          },
-                          "first_name": {
-                            "type": "string"
-                          },
-                          "last_name": {
-                            "type": "string"
-                          },
-                          "dob": {
-                            "type": "string"
-                          },
-                          "timezone": {
-                            "type": "string"
-                          },
-                          "created_at": {
-                            "type": "string"
-                          },
-                          "updated_at": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "email",
-                          "first_name",
-                          "last_name",
-                          "dob",
-                          "timezone",
-                          "created_at",
-                          "updated_at"
-                        ],
-                        "x-apidog-ignore-properties": [],
-                        "x-apidog-orders": [
-                          "id",
-                          "email",
-                          "first_name",
-                          "last_name",
-                          "dob",
-                          "timezone",
-                          "created_at",
-                          "updated_at"
-                        ]
-                      },
-                      "created_at": {
-                        "type": "integer"
-                      }
-                    },
-                    "required": [
-                      "status",
-                      "service",
-                      "message",
-                      "data",
-                      "created_at"
-                    ],
-                    "x-apidog-ignore-properties": [],
-                    "x-apidog-orders": [
-                      "status",
-                      "service",
-                      "message",
-                      "data",
-                      "created_at"
-                    ]
-                  }
-                }
-              }
-            }
-          },
-          "x-run-in-apidog": "https://apidog.com/web/project/422667/apis/api-5777564-run"
-        },
-        "delete": {
-          "summary": "Delete user",
-          "x-apidog-folder": "sdt-test",
-          "x-apidog-status": "developing",
-          "deprecated": false,
-          "description": "",
-          "tags": [
-            "sdt-test"
-          ],
-          "parameters": [],
-          "requestBody": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
+                    "created_at": {
                       "type": "integer"
                     }
                   },
                   "required": [
-                    "id"
+                    "status",
+                    "service",
+                    "message",
+                    "data",
+                    "created_at"
                   ],
                   "x-apidog-ignore-properties": [],
                   "x-apidog-orders": [
-                    "id"
+                    "status",
+                    "service",
+                    "message",
+                    "data",
+                    "created_at"
                   ]
-                },
-                "example": ""
-              }
-            }
-          },
-          "responses": {
-            "200": {
-              "description": "OK",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "status": {
-                        "type": "boolean"
-                      },
-                      "service": {
-                        "type": "string"
-                      },
-                      "message": {
-                        "type": "string"
-                      },
-                      "data": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                          },
-                          "email": {
-                            "type": "string"
-                          },
-                          "first_name": {
-                            "type": "string"
-                          },
-                          "last_name": {
-                            "type": "string"
-                          },
-                          "dob": {
-                            "type": "string"
-                          },
-                          "timezone": {
-                            "type": "string"
-                          },
-                          "created_at": {
-                            "type": "string"
-                          },
-                          "updated_at": {
-                            "type": "string"
-                          }
-                        },
-                        "required": [
-                          "id",
-                          "email",
-                          "first_name",
-                          "last_name",
-                          "dob",
-                          "timezone",
-                          "created_at",
-                          "updated_at"
-                        ],
-                        "x-apidog-ignore-properties": [],
-                        "x-apidog-orders": [
-                          "id",
-                          "email",
-                          "first_name",
-                          "last_name",
-                          "dob",
-                          "timezone",
-                          "created_at",
-                          "updated_at"
-                        ]
-                      },
-                      "created_at": {
-                        "type": "integer"
-                      }
-                    },
-                    "required": [
-                      "status",
-                      "service",
-                      "message",
-                      "data",
-                      "created_at"
-                    ],
-                    "x-apidog-ignore-properties": [],
-                    "x-apidog-orders": [
-                      "status",
-                      "service",
-                      "message",
-                      "data",
-                      "created_at"
-                    ]
-                  }
                 }
               }
             }
-          },
-          "x-run-in-apidog": "https://apidog.com/web/project/422667/apis/api-5777566-run"
-        }
+          }
+        },
+        "x-run-in-apidog": "https://apidog.com/web/project/422667/apis/api-5777555-run"
+      },
+      "put": {
+        "summary": "Update user",
+        "x-apidog-folder": "Sdt-test",
+        "x-apidog-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Sdt-test"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "first_name": {
+                    "type": "string"
+                  },
+                  "last_name": {
+                    "type": "string"
+                  },
+                  "dob": {
+                    "type": "string"
+                  },
+                  "timezone": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "email",
+                  "first_name",
+                  "last_name",
+                  "dob",
+                  "timezone"
+                ],
+                "x-apidog-ignore-properties": [],
+                "x-apidog-orders": [
+                  "id",
+                  "email",
+                  "first_name",
+                  "last_name",
+                  "dob",
+                  "timezone"
+                ]
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "service": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "first_name": {
+                          "type": "string"
+                        },
+                        "last_name": {
+                          "type": "string"
+                        },
+                        "dob": {
+                          "type": "string"
+                        },
+                        "timezone": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "email",
+                        "first_name",
+                        "last_name",
+                        "dob",
+                        "timezone",
+                        "created_at",
+                        "updated_at"
+                      ],
+                      "x-apidog-ignore-properties": [],
+                      "x-apidog-orders": [
+                        "id",
+                        "email",
+                        "first_name",
+                        "last_name",
+                        "dob",
+                        "timezone",
+                        "created_at",
+                        "updated_at"
+                      ]
+                    },
+                    "created_at": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "service",
+                    "message",
+                    "data",
+                    "created_at"
+                  ],
+                  "x-apidog-ignore-properties": [],
+                  "x-apidog-orders": [
+                    "status",
+                    "service",
+                    "message",
+                    "data",
+                    "created_at"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apidog": "https://apidog.com/web/project/422667/apis/api-5777564-run"
+      },
+      "delete": {
+        "summary": "Delete user",
+        "x-apidog-folder": "Sdt-test",
+        "x-apidog-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Sdt-test"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "id"
+                ],
+                "x-apidog-ignore-properties": [],
+                "x-apidog-orders": [
+                  "id"
+                ]
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "service": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "first_name": {
+                          "type": "string"
+                        },
+                        "last_name": {
+                          "type": "string"
+                        },
+                        "dob": {
+                          "type": "string"
+                        },
+                        "timezone": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "email",
+                        "first_name",
+                        "last_name",
+                        "dob",
+                        "timezone",
+                        "created_at",
+                        "updated_at"
+                      ],
+                      "x-apidog-ignore-properties": [],
+                      "x-apidog-orders": [
+                        "id",
+                        "email",
+                        "first_name",
+                        "last_name",
+                        "dob",
+                        "timezone",
+                        "created_at",
+                        "updated_at"
+                      ]
+                    },
+                    "created_at": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "service",
+                    "message",
+                    "data",
+                    "created_at"
+                  ],
+                  "x-apidog-ignore-properties": [],
+                  "x-apidog-orders": [
+                    "status",
+                    "service",
+                    "message",
+                    "data",
+                    "created_at"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apidog": "https://apidog.com/web/project/422667/apis/api-5777566-run"
       }
     },
-    "components": {
-      "schemas": {}
-    },
-    "servers": [
-      {
-        "url": "http://localhost:3000",
-        "description": "Testing Env"
+    "/v1/mail/resend": {
+      "post": {
+        "summary": "Resend Mail",
+        "x-apidog-folder": "Sdt-test",
+        "x-apidog-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "Sdt-test"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "batch": {
+                    "type": "string"
+                  },
+                  "admin_id": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "batch",
+                  "admin_id"
+                ],
+                "x-apidog-ignore-properties": [],
+                "x-apidog-orders": [
+                  "batch",
+                  "admin_id"
+                ]
+              },
+              "example": ""
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apidog-ignore-properties": [],
+                  "x-apidog-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apidog": "https://apidog.com/web/project/422667/apis/api-5797774-run"
       }
-    ]
-  }
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Testing Env"
+    }
+  ]
+}
