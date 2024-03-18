@@ -8,7 +8,18 @@ export interface MailServiceInterface {
      * @param date
      * @returns
      */
-    sendMail(
+    sendMailBirthday(
+        mailAction: string,
+        date: string
+    ): Promise<void>;
+
+    /**
+     * 
+     * @param mailAction
+     * @param date
+     * @returns
+     */
+    sendMailAnniv(
         mailAction: string,
         date: string
     ): Promise<void>;

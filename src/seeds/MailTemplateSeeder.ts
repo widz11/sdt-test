@@ -40,7 +40,12 @@ export class MailTemplateSeeder {
             {
                 id: 1,
                 name: "mail-birthday",
-                message: "Happy Birthday"
+                message: "It's your birthday."
+            },
+            {
+                id: 2,
+                name: "mail-anniversary",
+                message: "It's company anniversary."
             }
         ]
     }

@@ -1,6 +1,6 @@
 import { Entity, Index, PrimaryGeneratedColumn, Column } from "typeorm";
 import { BaseModel } from "../../../lib/database/mysql/model/BaseModel";
-import { MailTemplateModelInterface } from "./contract/MailTemplateModelInterface";
+import { MAIL_ANNIVERSARY, MAIL_BIRTHDAY, MailTemplateModelInterface } from "./contract/MailTemplateModelInterface";
 
 @Entity("mail_template")
 @Index(["id"], { unique: true })
@@ -55,6 +55,7 @@ export class MailTemplateModel
 	 * =================================================================================================================
 	 */
 	generateMessage(name: string): string {
-		return `Hey, ${name} it's your birthday.`
+		let message = `Hi, ${name}.`;
+		return `${message} ${this.getMessage()}`;
 	}
 }

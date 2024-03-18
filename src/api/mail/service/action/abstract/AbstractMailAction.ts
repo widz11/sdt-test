@@ -5,7 +5,6 @@ import { MailLogRepositoryInterface } from "../../../repository/contract/MailLog
 import { MailSentRepositoryInterface } from "../../../repository/contract/MailSentRepositoryInterface";
 import { MailTemplateRepositoryInterface } from "../../../repository/contract/MailTemplateRepositoryInterface";
 
-export const MAIL_BIRTHDAY = "mail-birthday";
 export const MAIL_QUEUE = "email";
 export const MAIL_TIME = 9;
 

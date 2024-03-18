@@ -1,11 +1,12 @@
+import moment from "moment-timezone";
 import { Dateparser } from "../../../../../lib/date/Dateparser";
 import { LOGGER_LEVEL_ERROR, WinstonLogger } from "../../../../../lib/logger/winston/WinstonLogger";
 import { RabbitPublisher } from "../../../../../lib/queue/rabbitmq/RabbitPublisher";
 import { UserModelInterface } from "../../../../user/model/contract/UserModelInterface";
 import { UserService } from "../../../../user/service/UserService";
 import { UserServiceInterface } from "../../../../user/service/contract/UserServiceInterface";
-import { MailTemplateModelInterface } from "../../../model/contract/MailTemplateModelInterface";
-import { AbstractMailAction, MAIL_BIRTHDAY } from "./AbstractMailAction";
+import { MAIL_BIRTHDAY, MailTemplateModelInterface } from "../../../model/contract/MailTemplateModelInterface";
+import { AbstractMailAction, MAIL_QUEUE, MAIL_TIME } from "./AbstractMailAction";
 
 /**
  * Abstract Class AbstractMailSenderAction
@@ -62,11 +63,58 @@ export abstract class AbstractMailSenderAction
     }
 
     /**
-     * 
+     * @param date
      * @param users
      * @returns
      */
-    abstract handle(date: string, users: UserModelInterface[]): Promise<any>;
+    async handle(
+        date: string,
+        users: UserModelInterface[]
+    ): Promise<any> {
+        const dateTime = moment(date);
+        for (const user of users) {
+            const localHour = dateTime.tz(user.getTimezone()).hour();
+            if (localHour == this.getTimeLocal()) {
+                const mailSent = await this.mailSentRepository
+                    .findByUserIDAndBatch(
+                        user.getID(),
+                        this.batch
+                    );
+                if (mailSent) continue;
+                await this.mailSentRepository.transaction(
+                    async (entityManager: any) => {
+                        // Store to mail sent
+                        let trx = await this.mailSentRepository.createWithEntityManager({
+                            user_id: user.getID(),
+                            mail_template_id: this.mailTemplate.getID(),
+                            batch: this.batch,
+                            status: "processing",
+                            send_at: 0,
+                            admin_id: 0
+                        }, entityManager);
+                        entityManager = trx.entityManager;
+                        // Sent to queue
+                        await this.queue.handlePub("", MAIL_QUEUE, 
+                            JSON.stringify({
+                                admin_id: 0,
+                                batch: this.batch,
+                                mail_sent_id: trx.data.id,
+                                user_id: user.getID(),
+                                mail_template_id: this.mailTemplate.getID(),
+                                email: user.getEmail(),
+                                first_name: user.getFirstName(),
+                                last_name: user.getLastName(),
+                                dob: user.getDateOfBirth(),
+                                template: this.mailTemplate.getName(),
+                                message: this.mailTemplate.generateMessage(user.fullName()), 
+                            })
+                        );
+                        return trx.data;
+                    }
+                );
+            }
+        }
+    }
 
     /**
      * 
@@ -95,13 +143,7 @@ export abstract class AbstractMailSenderAction
      * @returns
      */
     async getUsers(date: string): Promise<UserModelInterface[]> {
-        const dob = new Date(date);
-        let startDate = Dateparser.formatDate(Dateparser.subHours(dob, 12), 'Y-m-d');
-        let endDate = Dateparser.formatDate(Dateparser.addHours(dob, 12), 'Y-m-d');
-        return await this.userService.getUsers({
-            start_date: startDate,
-            end_date: endDate
-        });
+        return await this.userService.getUsers({});
     }
 
     /**
@@ -112,5 +154,13 @@ export abstract class AbstractMailSenderAction
     generateBatch(date: string): number {
         date = Dateparser.formatDate(new Date(date), 'Y-m-d');
         return new Date(date).getTime();
-    } 
+    }
+
+    /**
+     * 
+     * @returns
+     */
+    getTimeLocal(): number {
+        return MAIL_TIME;
+    }
 }

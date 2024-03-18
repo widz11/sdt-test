@@ -1,11 +1,15 @@
 import { UserRepositoryInterface } from "./../api/user/repository/contract/UserRepositoryInterface";
 import { UserRepository } from "../api/user/repository/UserRepository";
+import { Dateparser } from "../lib/date/Dateparser";
 
 /**
  * Class UserSeeder
  */
 export class UserSeeder {
     protected repository: UserRepositoryInterface;
+    protected totalUsers: number = 10;
+    protected timeZone: string = "Asia/Jakarta";
+    protected dob: string = "1990-03-18";
 
     /**
      * Constructor
@@ -36,14 +40,17 @@ export class UserSeeder {
      * @returns
      */
     private getData(): any[] {
-        return [
-            {
-                email: "userx1@xxx.com",
-                first_name: "user 1",
-                last_name: "xxx",
-                dob: "1990-01-01",
-                timezone: "Asia/Jakarta"
-            }
-        ]
+        const result = [];
+        const timestamp = Dateparser.unixNow();
+        for (let i = 0; i < this.totalUsers; i++) {
+            result.push({
+                email: `user_${i+1}_${timestamp}@xxx.com`,
+                first_name: `User ${i+1}`,
+                last_name: `${timestamp}`,
+                dob: this.dob,
+                timezone: this.timeZone
+            });
+        }
+        return result;
     }
 }
